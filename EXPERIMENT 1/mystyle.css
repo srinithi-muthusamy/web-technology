@@ -1,0 +1,84 @@
+h2{
+	font-family:rockwell;
+	font-size:20px;
+}
+h3{
+	border:5px solid lightSeaGreen;
+	background-color:lightSeaGreen;
+	color:white;
+	font-family:illuma black;
+	
+	
+}
+hr {
+            border: 0;
+            border-top: 2px solid black;
+        }
+ table{
+border-collapse: collapse;
+border: 2px solid white;
+margin:20px;
+}
+th{
+	background-color:teal;
+	color:white;
+}
+td{
+	background-color:lavender;
+}
+th,td{
+font-size:20px;
+border: 2px solid mintcream;
+padding:5px;
+}
+tr{
+font-size:20px;
+border: 2px solid mintcream;
+padding:10px;
+}
+.head{
+	width:10%;
+}
+.head1{
+	width:14%;
+}
+.head2{
+	width:24%;
+}
+.head3{
+	width:16%;
+}
+.head4{
+	width:11%;
+}
+.head5{
+	width:10%;
+}
+.head6{
+	width:14%;
+}
+.head7{
+	width:12%;
+}
+.head8{
+	width:14%;
+}
+.co{
+font-size:20px;
+}
+.co1{
+font-size:20px;
+}
+.co2{
+font-size:20px;
+}
+
+.c ul li{
+list-style-type:none;
+}
+.c1 ol li{
+list-style-type:none;
+}
+.c2 ul li{
+list-style-type:none;
+}
