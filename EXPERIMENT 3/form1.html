@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IEPC Consultancy Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  button {
+    width: 48%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px; /* Added margin */
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  #result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #dff0d8;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>IEPC Consultancy Calculator</h1>
+    <form id="consultancyForm">
+        <label for="organization">Organization Name:</label>
+        <input type="text" id="organization" placeholder="Enter organization name" required><br>
+
+        <label for="nature">Nature of Consultancy:</label>
+        <select id="nature" required>
+            <option value="Testing">Testing</option>
+            <option value="Trainers">Trainers</option>
+            <option value="Consultancy">Consultancy</option>
+        </select><br>
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Enter amount" required><br>
+
+        <label for="faculty">Number of faculty involved:</label>
+        <input type="number" id="faculty" required><br>
+
+        <div class="button-group">
+            <button type="button" onclick="calculateGST()">Calculate</button>
+            <button type="button" onclick="resetForm()">Reset</button>
+            <button type="button" onclick="clearResult()">Clear</button>
+        </div>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function calculateGST() {
+    var organization = document.getElementById("organization").value;
+    var nature = document.getElementById("nature").value;
+    var amount = parseFloat(document.getElementById("amount").value);
+    var faculty = parseInt(document.getElementById("faculty").value);
+
+    if (isNaN(amount) || amount <= 0) {
+        alert("Please enter a valid amount.");
+        return;
+    }
+
+    var am1= amount * 0.30;
+    var am2= amount * 0.70;
+    var perAmount = am2/ faculty;
+    var gstAmount = amount * 0.18;
+    var totalAmount = amount + gstAmount;
+
+    var result = "<strong>Organization Name:</strong> " + organization + "<br>";
+    result += "<strong>Nature of Consultancy:</strong> " + nature + "<br>";
+    result += "<strong>Amount:</strong> " + amount.toFixed(2) + "<br>";
+    result += "<strong>To the Organization:</strong> " + am1.toFixed(2) + "<br>";
+    result += "<strong>To the faculty:</strong> " + am2.toFixed(2) + "<br>";
+    result += "<strong>Per faculty:</strong> " + perAmount.toFixed(2) + "<br>";
+    result += "<strong>GST (18%):</strong> " + gstAmount.toFixed(2) + "<br>";
+    result += "<strong>Total Amount (including GST):</strong>" + totalAmount.toFixed(2) + "<br>";
+
+    document.getElementById("result").innerHTML = result;
+}
+
+function resetForm() {
+    document.getElementById("consultancyForm").reset();
+    clearResult();
+}
+
+function clearResult() {
+    document.getElementById("result").innerHTML = "";
+}
+</script>
+
+</body>
+</html>
