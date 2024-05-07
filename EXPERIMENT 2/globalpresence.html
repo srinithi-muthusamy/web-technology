@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GLOBALPRESENCE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: white;
+            padding: 10px;
+            z-index: 1000;
+            display: flex; 
+            align-items: center; 
+        }
+
+        .navbar a {
+            color: grey;
+            font-size: 15px;
+            text-decoration: none;
+            margin-right: 10px;
+            padding: 5px;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+            color: white;
+        }
+	h1 {
+            font-family: Cooper Black, sans-serif;
+            font-size: 35px;
+            color: blue;
+            
+        	}
+        img {
+            width: 100%;
+            height: auto;
+            margin-top:1px;
+        }
+
+        .content {
+            display: flex;
+            width: 100%;
+            
+        }
+
+        .heading {
+            width: 40%;
+            padding-left: 10%;
+            margin-right: 5%;
+        }
+
+        .text {
+            width: 60%;
+            padding-right: 10%;
+        }
+	 .container {
+            display: flex;            justify-content: center;
+            align-items: center;
+            margin-top:5%;
+            
+	 table {
+            width:50%; 
+            table-layout: fixed; 
+        }
+	th{
+	border:2px solid lightblue;
+	padding:5%;
+	background-color:lightblue;
+	border-radius:10px;
+	}
+        .container {
+            max-width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="aboutus.html">About Us</a>
+        <a href="globalpresence.html">Global Presence</a>
+        <a href="support.html">Support</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="careers.html">Careers</a>
+    </div>
+	 <h1 style="margin-left:20px;">LUMINOUS</h1>
+    <img src="lumi9.jpg" width="100%" height="30%">
+    <div class="content">
+        <div class="heading">
+            <p style="font-size:20px";>Over the last 35 years, Luminous Power Technologies has established itself as the leading home electrical specialist in India with a vast portfolio comprising of Power back up solutions such as Home UPS, Inverter Batteries and Solar Applications.</p>
+        </div>
+        <div class="text">
+            <p style="font-size:20px";>This has paved the way for Luminous’ success across global markets as well. The organization has shown exponential growth over the last 5 years and made its presence felt in 40 countries through a strong and wide distribution network, allowing us to showcase new and innovative product lines in various international events such as Middle East Electricity (Dubai), Inter Solar (Germany), Inter Solar (Middle East), Canton Fair (China) and more.</p>
+        </div>
+    </div>
+	<div class="container">
+    	<table>
+		<tr>
+		<th>36+ <br>Countries</th>
+		<th>350 <br>States</th>
+		<th>3500 <br>Cities</th>
+		<tr>
+   	</table>
+	</div>
+	<div class="content">
+		<div class="heading">
+			<h2 style="font-size:40px;padding-top:20px;"><dd>Enquiry Form<dd></h2>
+			<p>For enquiries in regards to Luminous products in our overseas markets and for more details fill in the form below</p>
+		</div>
+		<div class="text">
+			<div class="container">
+    
+    <form action="#" method="post">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+		</div>
+		
+	</div>
+
+</body>
+</html>
