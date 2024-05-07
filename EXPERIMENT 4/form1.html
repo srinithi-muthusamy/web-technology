@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .error {
+      color: red;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    /* Additional CSS for styling */
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h1>Registration Form (Left Half)</h1>
+        <form id="registrationFormLeft" onsubmit="return validateForm('registrationFormLeft')">
+          <!-- Roll No field -->
+          <div class="form-group">
+            <label for="rollNo">Roll No:</label>
+            <input type="text" class="form-control" id="rollNo" name="rollNo" placeholder="Enter your roll number" required>
+            <span id="rollNoError" class="error"></span>
+          </div>
+          <!-- End of Roll No field -->
+
+          <!-- Name field -->
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+            <span id="nameError" class="error"></span>
+          </div>
+          <!-- End of Name field -->
+
+          <!-- Gender field -->
+          <div class="form-group">
+            <label>Gender:</label><br>
+            <label><input type="radio" name="gender" value="male" required> Male</label>
+            <label><input type="radio" name="gender" value="female" required> Female</label>
+            <span id="genderError" class="error"></span>
+          </div>
+          <!-- End of Gender field -->
+
+          <!-- Programming Languages field -->
+          <div class="form-group">
+            <label>Programming Languages:</label><br>
+            <label><input type="checkbox" name="languages" value="Java"> Java</label>
+            <label><input type="checkbox" name="languages" value="Python"> Python</label>
+            <label><input type="checkbox" name="languages" value="JavaScript"> JavaScript</label>
+            <!-- Add more languages as needed -->
+            <span id="languagesError" class="error"></span>
+          </div>
+          <!-- End of Programming Languages field -->
+
+          <!-- Area of Interest field (Dropdown) -->
+          <div class="form-group">
+            <label for="areaOfInterest">Area of Interest:</label>
+            <select class="form-control" id="areaOfInterest" name="areaOfInterest" required>
+              <option value="">Select Area of Interest</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Mobile App Development">Mobile App Development</option>
+              <option value="Data Science">Data Science</option>
+              <!-- Add more options as needed -->
+            </select>
+            <span id="areaOfInterestError" class="error"></span>
+          </div>
+          <!-- End of Area of Interest field -->
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h1>Registration Form (Right Half)</h1>
+        <form id="registrationFormRight" onsubmit="return validateForm('registrationFormRight')">
+          <!-- Email field -->
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            <span id="emailError" class="error"></span>
+          </div>
+          <!-- End of Email field -->
+
+          <!-- Phone Number field -->
+          <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+            <span id="phoneError" class="error"></span>
+          </div>
+          <!-- End of Phone Number field -->
+
+          <!-- Password field -->
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+            <span id="passwordError" class="error"></span>
+          </div>
+          <!-- End of Password field -->
+
+          <!-- Confirm Password field -->
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+            <span id="confirmPasswordError" class="error"></span>
+          </div>
+          <!-- End of Confirm Password field -->
+
+          <!-- Form submission and reset buttons -->
+          <div class="form-group">
+            <button type="button" class="btn btn-primary" onclick="validateForm('registrationFormRight')">Register</button>
+            <button type="button" class="btn btn-secondary" onclick="resetForm('registrationFormRight')">Reset</button>
+            <div id="successMessage" class="success"></div>
+            <div id="errorMessage" class="error"></div>
+          </div>
+          <!-- End of Form submission and reset buttons -->
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function validateForm(formId) {
+      var rollNo = document.getElementById(formId).querySelector('#rollNo').value;
+      var rollNoError = document.getElementById(formId).querySelector('#rollNoError');
+      var name = document.getElementById(formId).querySelector('#name').value;
+      var nameError = document.getElementById(formId).querySelector('#nameError');
+      var gender = document.getElementById(formId).querySelector('input[name="gender"]:checked');
+      var genderError = document.getElementById(formId).querySelector('#genderError');
+      var languages = document.getElementById(formId).querySelectorAll('input[name="languages"]:checked');
+      var languagesError = document.getElementById(formId).querySelector('#languagesError');
+      var areaOfInterest = document.getElementById(formId).querySelector('#areaOfInterest').value;
+      var areaOfInterestError = document.getElementById(formId).querySelector('#areaOfInterestError');
+      var email = document.getElementById(formId).querySelector('#email').value;
+      var emailError = document.getElementById(formId).querySelector('#emailError');
+      var phone = document.getElementById(formId).querySelector('#phone').value;
+      var phoneError = document.getElementById(formId).querySelector('#phoneError');
+      var password = document.getElementById(formId).querySelector('#password').value;
+      var passwordError = document.getElementById(formId).querySelector('#passwordError');
+      var confirmPassword = document.getElementById(formId).querySelector('#confirmPassword').value;
+      var confirmPasswordError = document.getElementById(formId).querySelector('#confirmPasswordError');
+      var successMessage = document.getElementById('successMessage');
+      var errorMessage = document.getElementById('errorMessage');
+
+      // Regular expression for roll number validation
+      var rollNoPattern = /^[0-9]{2}[A-Za-z]{3}[0-9]{3}$/;
+
+      if (!rollNoPattern.test(rollNo)) {
+        rollNoError.textContent = 'Please enter a valid roll number (e.g., 12ABC123)';
+        return false;
+      } else {
+        rollNoError.textContent = '';
+      }
+
+      // Validation for Name field
+      if (!/^[A-Za-z][A-Za-z\s]*$/.test(name)) {
+        nameError.textContent = 'Start with alphabet and must have space';
+        return false;
+      } else {
+        nameError.textContent = '';
+      }
+
+      // Validation for Gender field
+      if (!gender) {
+        genderError.textContent = 'Please select your gender';
+        return false;
+      } else {
+        genderError.textContent = '';
+      }
+
+      // Validation for Programming Languages field
+      if (languages.length === 0) {
+        languagesError.textContent = 'Please select at least one programming language';
+        return false;
+      } else {
+        languagesError.textContent = '';
+      }
+
+      // Validation for Area of Interest field
+      if (areaOfInterest === '') {
+        areaOfInterestError.textContent = 'Please select your area of interest';
+        return false;
+      } else {
+        areaOfInterestError.textContent = '';
+      }
+
+      // Validation for Email field
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        emailError.textContent = 'Please enter a valid email address';
+        return false;
+      } else {
+        emailError.textContent = '';
+      }
+
+      // Validation for Phone Number field
+      var phonePattern = /^\d{10}$/;
+      if (!phonePattern.test(phone)) {
+        phoneError.textContent = 'Please enter a valid 10-digit phone number';
+        return false;
+      } else {
+        phoneError.textContent = '';
+      }
+
+      // Validation for Password field
+      var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])/;
+      if (!passwordPattern.test(password)) {
+        passwordError.textContent = 'Password must contain at least one uppercase letter, one lowercase letter, and one special character';
+        return false;
+      } else {
+        passwordError.textContent = '';
+      }
+
+      // Validation for Confirm Password field
+      if (password !== confirmPassword) {
+        confirmPasswordError.textContent = 'Passwords do not match';
+        return false;
+      } else {
+        confirmPasswordError.textContent = '';
+      }
+
+      // If all validations pass, show success message
+      successMessage.textContent = 'Successfully Registered!';
+
+      return false; // Prevent form submission
+    }
+
+    function resetForm(formId) {
+      // Reset form fields
+      document.getElementById(formId).reset();
+      // Clear error messages
+      var errorElements = document.getElementById(formId).querySelectorAll('.error');
+      errorElements.forEach(function(element) {
+        element.textContent = '';
+      });
+      // Clear success message
+      document.getElementById('successMessage').textContent = '';
+    }
+  </script>
+</body>
+
+</html>
