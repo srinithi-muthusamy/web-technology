@@ -1,0 +1,32 @@
+[
+    {
+      "name": "Sorna Priya K",
+      "registerNumber": "22ITR095",
+      "dept": "IT",
+      "cgpa":"8.50"
+    },
+    {
+        "name": "Subiksha V",
+        "registerNumber": "22ITR101",
+        "dept": "IT",
+        "cgpa":"8.85"
+    },
+    {
+        "name": "Srinithi M",
+        "registerNumber": "22ITR098",
+        "dept": "IT",
+        "cgpa":"8.75"
+    },
+    {
+        "name": "Subashri M",
+      "registerNumber": "22ITR100",
+      "dept": "IT",
+      "cgpa":"8.95"
+    },
+    {
+        "name": "Niranjana N",
+      "registerNumber": "22ITR072",
+      "dept": "IT",
+      "cgpa":"8.95"
+    }
+  ]
