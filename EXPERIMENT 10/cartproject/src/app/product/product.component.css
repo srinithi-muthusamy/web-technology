@@ -1,0 +1,77 @@
+/* product.component.css */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .product-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .product-card img {
+    max-width: 100%;
+    height:200px;
+    border-radius: 5px;
+  }
+  
+  .product-card h3 {
+    margin-top: 10px;
+  }
+  
+  .product-card p {
+    margin: 10px 0;
+  }
+  
+  .product-card button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .product-card button:hover {
+    background-color: #0056b3;
+  }
+  
+  .product-card button:first-of-type {
+    background-color: #28a745;
+  }
+  
+  .product-card button:first-of-type:hover {
+    background-color: #218838;
+  }
+  .product-card button {
+    width: 20%; /* Makes all buttons the same width */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    padding: 10px 0; /* Vertical padding only, adjust as needed */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .product-card button:hover {
+    background-color: #0056b3;
+  }
+  
+  .product-card button:first-of-type {
+    background-color: #28a745;
+  }
+  
+  .product-card button:first-of-type:hover {
+    background-color: #218838;
+  }
