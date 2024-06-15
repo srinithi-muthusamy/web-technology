@@ -1,0 +1,152 @@
+<div class="centered-form-container">
+  <form [formGroup]="frm" (ngSubmit)="onSubmit()">
+    <h1>FORM</h1>
+    <p>
+      <label for="firstname">First Name</label>
+      <input
+        type="text"
+        id="firstname"
+        name="firstname"
+        formControlName="firstname"
+      />
+      <span
+        *ngIf="
+          frm.controls['firstname'].invalid &&
+          (frm.controls['firstname'].dirty || frm.controls['firstname'].touched)
+        "
+      >
+        <b
+          style="color: red"
+          *ngIf="frm.controls['firstname'].errors?.['required']"
+        >
+          This field is required
+        </b>
+        <b
+          style="color: red"
+          *ngIf="frm.controls['firstname'].errors?.['pattern']"
+        >
+          Invalid name format
+        </b>
+        <b
+          style="color: red"
+          *ngIf="frm.controls['firstname'].errors?.['minlength'] || frm.controls['firstname'].errors?.['maxlength']"
+        >
+          It should contain 8-12 characters
+        </b>
+      </span>
+    </p>
+    <p>
+      <label for="lastname">Last Name</label>
+      <input type="text" id="lastname" formControlName="lastname" />
+      <span
+        *ngIf="
+          frm.controls['lastname'].invalid &&
+          (frm.controls['lastname'].dirty || frm.controls['lastname'].touched)
+        "
+      >
+        <b
+          style="color: red"
+          *ngIf="frm.controls['lastname'].errors?.['required']"
+        >
+          This field is required
+        </b>
+        <b
+          style="color: red"
+          *ngIf="frm.controls['lastname'].errors?.['maxlength']"
+        >
+          Max length is 8
+        </b>
+      </span>
+    </p>
+    <p>
+      <label for="email">Email</label>
+      <input type="text" id="email" formControlName="email" />
+      <span
+        *ngIf="
+          frm.controls['email'].invalid &&
+          (frm.controls['email'].dirty || frm.controls['email'].touched)
+        "
+      >
+        <b
+          style="color: red"
+          *ngIf="frm.controls['email'].errors?.['required']"
+        >
+          This field is required
+        </b>
+        <b style="color: red" *ngIf="frm.controls['email'].errors?.['email']">
+          Enter a valid email
+        </b>
+      </span>
+    </p>
+    <p>
+      <label for="gender">Gender</label>
+      <input
+        type="radio"
+        value="Male"
+        id="gender-male"
+        formControlName="gender"
+      />Male
+      <input
+        type="radio"
+        value="Female"
+        id="gender-female"
+        formControlName="gender"
+      />Female
+    </p>
+    <p>
+      <label for="dept">Department</label>
+      <select id="dept" name="dept" formControlName="dept">
+        <option value="">Select Department</option>
+        <option value="IT">IT</option>
+        <option value="CSE">CSE</option>
+        <option value="ECE">ECE</option>
+      </select>
+    </p>
+    <p>
+      <label for="isverified">Confirmed</label>
+      <input
+        type="checkbox"
+        id="isverified"
+        name="isverified"
+        formControlName="isverified"
+      />
+    </p>
+    <button type="submit" [disabled]="!frm.valid">Submit</button>
+  </form>
+
+  <div *ngIf="submitted" class="submitted-data">
+    <h2>Form Data</h2>
+    <table>
+      <tr>
+        <th>Field</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>First Name</td>
+        <td>{{ formData.firstname }}</td>
+      </tr>
+      <tr>
+        <td>Last Name</td>
+        <td>{{ formData.lastname }}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{ formData.email }}</td>
+      </tr>
+      <tr>
+        <td>Gender</td>
+        <td>{{ formData.gender }}</td>
+      </tr>
+      <tr>
+        <td>Department</td>
+        <td>{{ formData.dept }}</td>
+      </tr>
+      <tr>
+        <td>Confirmed</td>
+        <td>{{ formData.isverified ? "Yes" : "No" }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
