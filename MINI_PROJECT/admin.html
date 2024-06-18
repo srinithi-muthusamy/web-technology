@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - LeaveEase</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styling for the contact form */
+        .contact-container {
+            width: 30%;
+            margin: 30px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Navigation and dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .bold {
+            margin-left: 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Sidebar and main content layout */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-top: 20px;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+            display: none;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            text-align: center; /* Center align content */
+        }
+
+        .leave-form-container {
+            display: none;
+            margin: 0 auto;
+            text-align: center; /* Align form text to the left */
+        }
+
+        .leave-form-container form {
+            display: inline-block;
+            text-align: left; /* Align form text to the left */
+            width: 100%; /* Full width */
+            max-width: 500px; /* Max width for better alignment */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">LeaveEase</div>
+        <nav>
+            <ul>
+                <li><a href="index1.html" class="bold">Home</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" id="dropbtn" class="bold">Users</a>
+                    <div class="dropdown-content">
+                        <a href="employee.html" onclick="showEmployeeLogin()">Employee</a>
+                        <a href="admin.html" onclick="loadContent('admin.html')">Admin</a>
+                    </div>
+                </li>
+                <li><a href="signup.html" class="bold">Signup</a></li>
+                <li><a href="contactus.html" class="bold">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contact-container">
+        <h2>Login for Admin</h2>
+        <form onsubmit="return handleAdminLogin()" action="http://localhost:8000" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
+
+    <div class="container" id="adminNav" style="display: none;">
+        <div class="sidebar">
+            <p><a href="#" id="manageEmployees">Manage employees</a></p>
+           
+        </div>
+        <div class="main-content" id="mainContent">
+            <div class="leave-form-container" id="leaveForm">
+                <h2>Manage employees</h2>
+                <form action="http://localhost:7050" method="post">
+                    <div class="form-group">
+                      <label for="id">Employee ID:</label>
+                      <input type="text" id="id" name="id" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="empname">Employee Name:</label>
+                      <input type="text" id="empname" name="empname" required>
+                    </div>
+                    <button type="submit">Add Employee</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function handleAdminLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (username === 'admin' && password === 'admin12') {
+                console.log('Admin login successful');
+                document.querySelector('.contact-container').style.display = 'none';
+                document.getElementById('adminNav').style.display = 'flex';
+                document.querySelector('.sidebar').style.display = 'block';
+            } else {
+                alert('Invalid username or password');
+            }
+            return false; // Prevent form submission
+        }
+
+        function showContent(section) {
+            console.log(`Showing content for: ${section}`);
+            document.getElementById('leaveForm').style.display = 'none';
+
+            
+        }
+
+        document.getElementById("manageEmployees").addEventListener("click", function(event) {
+            event.preventDefault();
+            console.log("Manage Employees clicked");
+            document.getElementById('leaveForm').style.display = 'block';
+        });
+
+        document.getElementById("manageLeaveRequests").addEventListener("click", function(event) {
+            event.preventDefault();
+            console.log("Manage Leave Requests clicked");
+            // Implement functionality for managing leave requests
+        });
+    </script>
+</body>
+</html>

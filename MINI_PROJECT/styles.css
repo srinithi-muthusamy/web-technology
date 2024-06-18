@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    z-index: 2;
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px; /* Adjust padding as needed */
+    box-sizing: border-box;
+}
+
+.welcome-header {
+    font-size: 3.5em;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    color: #4CAF50;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-right: 40px;
+    margin-left: 10px;
+    margin-top: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: slideInLeft 1s ease-in-out;
+    flex: 1;
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.description-box {
+    flex: 2;
+    position: relative;
+    margin-left: 0px;
+}
+
+.description {
+    width: 80%;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    border: 1px solid #ddd;
+    position: absolute;
+    top: 60px;
+    right: 0;
+}
+
+.description.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.dot-navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+    
+    margin-bottom: 20px; /* Add margin-bottom to create space */
+}
+
+.dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #aaa;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dot.active {
+    background-color: #4CAF50;
+    transform: scale(1.2);
+}
+
+footer {
+    padding: 10px;
+    background-color: #f1f1f1;
+    text-align: center;
+}

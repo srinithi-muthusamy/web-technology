@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users - LeaveEase</title>
+</head>
+<body>
+    <h2>Manage Users</h2>
+    <div class="add-employee-form">
+        <form id="addEmployeeForm" onsubmit="return addEmployee(event)">
+            <div class="form-group">
+                <label for="employeeId">Employee ID:</label>
+                <input type="text" id="employeeId" name="employeeId" required>
+            </div>
+            <div class="form-group">
+                <label for="employeeName">Employee Name:</label>
+                <input type="text" id="employeeName" name="employeeName" required>
+            </div>
+            <button type="submit" class="btn">Add Employee</button>
+        </form>
+    </div>
+    <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Employee rows will be appended here -->
+        </tbody>
+    </table>
+    <script>
+        function addEmployee(event) {
+            event.preventDefault();
+            const employeeId = document.getElementById('employeeId').value;
+            const employeeName = document.getElementById('employeeName').value;
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${employeeId}</td>
+                <td>${employeeName}</td>
+                <td>
+                    <button onclick="editEmployee('${employeeId}')">Edit</button>
+                    <button onclick="deleteEmployee('${employeeId}')">Delete</button>
+                </td>
+            `;
+            document.querySelector('#employeeTable tbody').appendChild(newRow);
+            document.getElementById('addEmployeeForm').reset();
+            return false;
+        }
+        function editEmployee(employeeId) {
+            console.log(`Editing employee with ID ${employeeId}`);
+        }
+        function deleteEmployee(employeeId) {
+            console.log(`Deleting employee with ID ${employeeId}`);
+        }
+    </script>
+</body>
+</html>
